@@ -26,13 +26,16 @@ npm install -g @anthropic-ai/claude-code
 
 > **Don't have npm?** You need to install Node.js first. Go to [nodejs.org](https://nodejs.org), download the installer, run it, then come back and run the command above.
 
-After installing, log in to Claude Code by running:
+After installing, log in to Claude Code. Here is how:
+
+- **On Windows:** open the Start menu, search for **Command Prompt** or **Anaconda Prompt**, and open it. Then type:
+- **On Mac:** open the **Terminal** app (search for it in Spotlight). Then type:
 
 ```
 claude
 ```
 
-It will open a browser window. Log in with the same account you use on claude.ai. You only need to do this once.
+Press Enter. It will open a browser window automatically. Log in with the same account you use on claude.ai. You only need to do this once.
 
 ### 3. Python
 Go to [python.org/downloads](https://python.org/downloads) and download Python 3.10 or higher. During installation, **make sure to check the box that says "Add Python to PATH"** before clicking Install.
