@@ -1,6 +1,6 @@
 # Resume Builder — Complete Setup Guide
 
-> This guide assumes you have never set up a Python project before. Follow every step in order and don't skip anything.
+> This guide assumes you have never set up a Python project before. Follow every step in order and don't skip anything. Choose your operating system below.
 
 ---
 
@@ -10,208 +10,382 @@ This is an AI-powered resume builder. You give it a job posting URL and your exi
 
 ---
 
-## What You Need Before You Start
+## Choose Your Setup Path
 
-You need four things installed on your computer (three if you are on Mac):
+- [I am on a Mac](#setup-for-mac)
+- [I am on Windows](#setup-for-windows)
 
-### 1. A Claude subscription
+---
+
+---
+
+# Setup for Mac
+
+---
+
+## Step 1 — Get a Claude Subscription
+
 Go to [claude.ai](https://claude.ai) and create an account with a paid plan (Pro or higher). The tool uses Claude AI to do its work, and it runs entirely through your subscription — no extra charges per use.
 
-### 2. Claude Code CLI
-Claude Code is a command-line tool made by Anthropic. Open a terminal and run:
+---
+
+## Step 2 — Install Homebrew (Mac Package Manager)
+
+Homebrew is a tool that makes installing software on Mac much easier. Open the **Terminal** app (press `Cmd + Space`, type "Terminal", press Enter) and paste this command:
+
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+Press Enter and follow the on-screen instructions. It will ask for your Mac password — type it and press Enter (you won't see the characters as you type, that's normal).
+
+When it finishes, close the Terminal and open a new one before continuing.
+
+> **Already have Homebrew?** Skip this step.
+
+---
+
+## Step 3 — Install Node.js
+
+In Terminal, run:
+
+```
+brew install node
+```
+
+Verify it installed correctly:
+
+```
+node --version
+```
+
+It should show a version number like `v20.11.0`.
+
+---
+
+## Step 4 — Install Claude Code CLI
+
+In Terminal, run:
 
 ```
 npm install -g @anthropic-ai/claude-code
 ```
 
-> **Don't have npm?** You need to install Node.js first. Go to [nodejs.org](https://nodejs.org), download the installer, run it, then come back and run the command above.
-
-After installing, log in to Claude Code. Here is how:
-
-- **On Windows:** open the Start menu, search for **Command Prompt** or **Anaconda Prompt**, and open it. Then type:
-- **On Mac:** open the **Terminal** app (search for it in Spotlight). Then type:
+Then log in to Claude Code:
 
 ```
 claude
 ```
 
-Press Enter. It will open a browser window automatically. Log in with the same account you use on claude.ai. You only need to do this once.
+This opens a browser window. Log in with the same account you use on claude.ai. You will see a code — paste it in the browser when asked. You only need to do this once.
 
-### 3. Git for Windows (Windows only)
-Go to [git-scm.com/downloads/win](https://git-scm.com/downloads/win) and download the installer. Run it with all the default options — no need to change anything. This installs Git Bash, which Claude Code requires to run on Windows.
-
-> **Mac users:** Git is already included with macOS. Skip this step.
-
-### 4. Python
-Go to [python.org/downloads](https://python.org/downloads) and download Python 3.10 or higher. During installation, **make sure to check the box that says "Add Python to PATH"** before clicking Install.
-
-To verify Python installed correctly, open a terminal and run:
-```
-python --version
-```
-It should show a version number like `Python 3.11.4`.
+> After logging in, you can close the Terminal session that opened. Claude Code is now authenticated on your Mac.
 
 ---
 
-## Step 1 — Download the Project
+## Step 5 — Install Python
 
-Open **Command Prompt** (Windows) or **Terminal** (Mac) and navigate to the folder where you want to save the project. For example:
+Go to [python.org/downloads](https://python.org/downloads) and download Python 3.10 or higher. Run the installer and follow the default steps.
 
-**Windows:**
-```
-cd C:\Users\YourName\Documents
-```
+Verify Python is installed:
 
-**Mac:**
 ```
-cd /Users/YourName/Documents
+python3 --version
 ```
 
-Then run:
+It should show something like `Python 3.11.4`.
+
+> **Note for Mac:** use `python3` and `pip3` instead of `python` and `pip` in all commands below.
+
+---
+
+## Step 6 — Download the Claude Code Desktop App
+
+Go to [claude.ai/download](https://claude.ai/download) and download Claude Code for Mac. Install it by dragging it to your Applications folder.
+
+Open it once to make sure it launches correctly, then close it — you will use it after cloning the project.
+
+---
+
+## Step 7 — Clone the Project
+
+In Terminal, navigate to the folder where you want to save the project. For example, to put it in your Documents:
+
+```
+cd ~/Documents
+```
+
+Then clone the project:
+
 ```
 git clone https://github.com/Raitza/resume-builder.git
 ```
 
-This creates a folder called `resume-builder` in that location with all the project files inside.
-
-Then enter the folder:
-```
-cd resume-builder
-```
+This creates a folder called `resume-builder` inside Documents with all the project files.
 
 ---
 
-## Step 2 — Install Dependencies
+## Step 8 — Open the Project in Claude Code Desktop
 
-From inside the `resume-builder` folder, run:
+1. Open **Claude Code Desktop** from your Applications folder.
+2. Click **Open Folder** (or "Add project") and navigate to the `resume-builder` folder you just cloned.
+3. Select it and open it.
 
-```
-pip install -r requirements.txt
-```
+You are now inside the project. From this point, Claude Code can guide you through the rest of the setup. Type this in the Claude Code chat:
 
-This installs all the Python libraries the tool needs. It may take a minute or two. Wait for it to finish.
+> *"Help me set up this resume builder project. Install dependencies, and guide me through editing config.py and the candidate profile."*
 
----
-
-## Step 3 — Fill In Your Personal Information
-
-Open the file `config.py` in any text editor (Notepad, VS Code, TextEdit, anything).
-
-You will see this:
-
-```python
-CANDIDATE_NAME          = "Your Full Name"
-CANDIDATE_LINKEDIN_URL  = "https://www.linkedin.com/in/your-profile/"
-CANDIDATE_EMAIL         = "your.email@example.com"
-CANDIDATE_PHONE         = "+1 (555) 000 0000"
-CANDIDATE_LOCATION      = "City, Country"
-```
-
-Replace each value with your real information. For example:
-
-```python
-CANDIDATE_NAME          = "Jane Smith"
-CANDIDATE_LINKEDIN_URL  = "https://www.linkedin.com/in/jane-smith-123/"
-CANDIDATE_EMAIL         = "jane.smith@gmail.com"
-CANDIDATE_PHONE         = "+1 (212) 555 7890"
-CANDIDATE_LOCATION      = "New York, USA"
-```
-
-Save the file.
-
-> **Important:** Keep the quotes around each value. Do not remove them.
+Claude Code will run `pip3 install -r requirements.txt`, open the files that need editing, and walk you through each one step by step.
 
 ---
 
-## Step 4 — Write Your Candidate Profile
+## What Claude Code Will Help You Configure
 
-Open the file `src/agents/prompts/_candidate_profile.md` in a text editor.
+Once inside the project, there are two files you must personalize before using the tool:
 
-This file tells the AI agents who you are. It is the most important piece of "training" you will do. The agents read this every single time they work on your resume.
+### `config.py` — Your contact information
+Claude Code will open this file and ask you to fill in:
+- Your full name
+- Your LinkedIn URL
+- Your email
+- Your phone number
+- Your location (City, Country)
 
-Replace the placeholder text with honest, specific information about yourself. Here is what each section means and what to write:
-
----
-
-**Background:**
-Where you are from, what languages you speak, and any relevant context about your work authorization or location. Be specific. For example:
-> *Latin American professional, fluent in English and Spanish, currently based in New York on a work visa.*
-
----
-
-**Experience:**
-How many total years of professional experience you have. Also write a note about how to frame your seniority — for example, whether you want to be positioned as senior, mid-level, or let the role determine it. For example:
-> *8 years total. Frame seniority based on the target role — do not default to a fixed level.*
-
----
-
-**Education:**
-Your highest degree and how you want it positioned. For example:
-> *Master's degree in Public Policy. Position it as a differentiator when the role values analytical rigor or research skills.*
+### `src/agents/prompts/_candidate_profile.md` — Your professional profile
+This tells the AI agents who you are. Claude Code will guide you through each section:
+- **Background:** where you are from, languages, work authorization context
+- **Experience:** total years, how to frame your seniority
+- **Education:** your degree and how to position it
+- **Core strengths:** your main skills (only what you can speak to in an interview)
+- **Perceived identity:** how you want to be seen by hiring managers
 
 ---
 
-**Core strengths:**
-List your main skills separated by commas. Be honest — only list things you can actually speak to in an interview. For example:
-> *Financial modeling, data visualization, strategy and advisory, stakeholder management, policy analysis, KPI frameworks.*
+## Step 9 — Add Your Files
+
+**Your resume:**
+Put your existing resume (`.docx` Word format only — no PDFs) into the `resumes/` folder inside the project.
+
+> Tip: use your most complete resume — all experience, all roles. The AI decides what to include per job.
+
+**Formatting reference:**
+Put a `.docx` resume formatted the way you want your outputs to look into `feedback/resume.docx`. This tells the AI your preferred visual style (fonts, margins, heading format). If you skip this, a default style is used.
 
 ---
 
-**Perceived identity:**
-How you want hiring managers to see you. What is your personal brand? For example:
-> *Impact-driven strategic thinker with a data-driven approach. Adapt the dominant angle to what each specific role demands.*
+## Step 10 — Run the App
 
----
+In Claude Code Desktop chat, type:
 
-Do not change or delete the last two lines of the file — they are instructions for the AI and should stay as-is.
+> *"Run the app"*
 
-Save the file.
-
----
-
-## Step 5 — Add Your Resume
-
-Put your existing resume (in `.docx` format — Word document) into the `resumes/` folder.
-
-This is the file the AI will use as the source of truth for your experience and achievements. The agents will never invent credentials — they reframe and tailor what is already in your resume.
-
-> **Important:** The file must be a `.docx` Word document. PDF files will not work.
-
-> **Tip:** Put your most complete resume here — all your experience, all your roles. The AI will decide what to include or leave out depending on each job. You can always add multiple resume versions.
-
----
-
-## Step 6 — Add a Reference Resume for Formatting
-
-This step is for formatting only — it tells the AI what your resume should look like visually.
-
-Put a `.docx` file named exactly `resume.docx` inside the `feedback/` folder:
+Or open Terminal, navigate to the project folder, and run:
 
 ```
-feedback/resume.docx
-```
-
-This should be a resume formatted exactly the way you want all your outputs to look — your preferred font, margins, heading style, etc. It can be your current resume or a template you like.
-
-> If you skip this step, the tool will use a default formatting style.
-
----
-
-## Step 7 — Run the App
-
-Open a terminal, navigate to the project folder, and run:
-
-```
+cd ~/Documents/resume-builder
 streamlit run app.py
 ```
 
-Your browser will open automatically with the app at `http://localhost:8501`.
-
-If the browser does not open automatically, open it yourself and go to that address.
+Your browser opens automatically at `http://localhost:8501`. The tool is ready to use.
 
 ---
 
-## How to Use the Tool
+## Mac Quick Start Checklist
+
+- [ ] Claude account with paid plan
+- [ ] Homebrew installed
+- [ ] Node.js installed (`brew install node`)
+- [ ] Claude Code CLI installed (`npm install -g @anthropic-ai/claude-code`)
+- [ ] Logged in to Claude Code (`claude` in Terminal → browser login)
+- [ ] Python 3.10+ installed
+- [ ] Claude Code Desktop app installed
+- [ ] Project cloned (`git clone https://github.com/Raitza/resume-builder.git`)
+- [ ] Project opened in Claude Code Desktop
+- [ ] Dependencies installed (`pip3 install -r requirements.txt`)
+- [ ] `config.py` filled with your info
+- [ ] `_candidate_profile.md` filled with your profile
+- [ ] Your resume `.docx` added to `resumes/`
+- [ ] Reference resume added to `feedback/resume.docx`
+- [ ] App running (`streamlit run app.py`)
+
+---
+
+---
+
+# Setup for Windows
+
+---
+
+## Step 1 — Get a Claude Subscription
+
+Go to [claude.ai](https://claude.ai) and create an account with a paid plan (Pro or higher). The tool uses Claude AI to do its work, and it runs entirely through your subscription — no extra charges per use.
+
+---
+
+## Step 2 — Install Node.js
+
+Go to [nodejs.org](https://nodejs.org), download the installer, and run it with all default options.
+
+Verify it installed correctly — open **Command Prompt** (press `Win + R`, type `cmd`, press Enter) and run:
+
+```
+node --version
+```
+
+It should show a version number like `v20.11.0`.
+
+---
+
+## Step 3 — Install Claude Code CLI
+
+In Command Prompt, run:
+
+```
+npm install -g @anthropic-ai/claude-code
+```
+
+---
+
+## Step 4 — Install Git for Windows
+
+Go to [git-scm.com/downloads/win](https://git-scm.com/downloads/win) and download the installer. Run it with all the default options — do not change anything. This installs Git Bash, which Claude Code requires to run on Windows.
+
+After installing, **close Command Prompt and open a new one** before continuing.
+
+---
+
+## Step 5 — Log In to Claude Code
+
+In Command Prompt, run:
+
+```
+claude
+```
+
+This opens a browser window. Log in with the same account you use on claude.ai. You will see a code — paste it in the browser when asked. You only need to do this once.
+
+---
+
+## Step 6 — Install Python
+
+Go to [python.org/downloads](https://python.org/downloads) and download Python 3.10 or higher. During installation, **check the box that says "Add Python to PATH"** before clicking Install — this is important.
+
+Verify Python installed correctly:
+
+```
+python --version
+```
+
+It should show something like `Python 3.11.4`.
+
+---
+
+## Step 7 — Download the Claude Code Desktop App
+
+Go to [claude.ai/download](https://claude.ai/download) and download Claude Code for Windows. Install it and open it once to confirm it launches, then close it.
+
+---
+
+## Step 8 — Clone the Project
+
+Open **Command Prompt** and navigate to where you want to save the project. For example:
+
+```
+cd C:\Users\YourName\Documents
+```
+
+Then clone the project:
+
+```
+git clone https://github.com/Raitza/resume-builder.git
+```
+
+This creates a folder called `resume-builder` in Documents with all the project files.
+
+---
+
+## Step 9 — Open the Project in Claude Code Desktop
+
+1. Open **Claude Code Desktop** from the Start menu.
+2. Click **Open Folder** and navigate to the `resume-builder` folder you just cloned.
+3. Select it and open it.
+
+Type this in the Claude Code chat:
+
+> *"Help me set up this resume builder project. Install dependencies, and guide me through editing config.py and the candidate profile."*
+
+Claude Code will run `pip install -r requirements.txt`, open the files that need editing, and walk you through each one step by step.
+
+---
+
+## What Claude Code Will Help You Configure
+
+### `config.py` — Your contact information
+- Your full name
+- Your LinkedIn URL
+- Your email
+- Your phone number
+- Your location (City, Country)
+
+### `src/agents/prompts/_candidate_profile.md` — Your professional profile
+- **Background:** where you are from, languages, work authorization context
+- **Experience:** total years, how to frame your seniority
+- **Education:** your degree and how to position it
+- **Core strengths:** your main skills
+- **Perceived identity:** how you want to be seen by hiring managers
+
+---
+
+## Step 10 — Add Your Files
+
+**Your resume:**
+Put your existing resume (`.docx` Word format only — no PDFs) into the `resumes/` folder inside the project.
+
+**Formatting reference:**
+Put a `.docx` resume formatted the way you want your outputs to look into `feedback/resume.docx`.
+
+---
+
+## Step 11 — Run the App
+
+In Claude Code Desktop chat, type:
+
+> *"Run the app"*
+
+Or open Command Prompt, navigate to the project folder, and run:
+
+```
+cd C:\Users\YourName\Documents\resume-builder
+streamlit run app.py
+```
+
+Your browser opens automatically at `http://localhost:8501`.
+
+---
+
+## Windows Quick Start Checklist
+
+- [ ] Claude account with paid plan
+- [ ] Node.js installed
+- [ ] Claude Code CLI installed (`npm install -g @anthropic-ai/claude-code`)
+- [ ] Git for Windows installed
+- [ ] Logged in to Claude Code (`claude` in Command Prompt → browser login)
+- [ ] Python 3.10+ installed (with "Add to PATH" checked)
+- [ ] Claude Code Desktop app installed
+- [ ] Project cloned (`git clone https://github.com/Raitza/resume-builder.git`)
+- [ ] Project opened in Claude Code Desktop
+- [ ] Dependencies installed (`pip install -r requirements.txt`)
+- [ ] `config.py` filled with your info
+- [ ] `_candidate_profile.md` filled with your profile
+- [ ] Your resume `.docx` added to `resumes/`
+- [ ] Reference resume added to `feedback/resume.docx`
+- [ ] App running (`streamlit run app.py`)
+
+---
+
+---
+
+# How to Use the Tool
 
 ### Basic workflow
 
@@ -236,125 +410,91 @@ If the job has essay questions or application form prompts (common on foundation
 
 ---
 
-## How to Train the Tool Over Time
+# How to Train the Tool Over Time
 
 This is where the tool gets smarter. Every time you edit a Claude-generated resume before sending it to an employer, you can feed those edits back in. The tool learns your preferences and applies them automatically in future runs.
 
-### Step-by-step
-
 **Step 1 — After the tool generates a resume, download it.**
-
 The file goes to the `output/` folder automatically (one subfolder per run, named after the company and role).
 
 **Step 2 — Open the resume in Word and make your edits.**
+Change whatever you would change before sending it — rework a bullet, fix the tone, reorder a section. These edits are the training signal.
 
-Change whatever you would change before actually sending it — rework a bullet, reorder a section, fix the tone of the summary, etc. These edits are the training signal.
+**Step 3 — Save your edited file with this naming convention:**
 
-**Step 3 — Save your edited file with a specific naming convention.**
+`resume_<companytag>.docx`
 
-Name it: `resume_<companytag>.docx`
-
-Where `<companytag>` is a short identifier for the company. Examples:
+Examples:
 - `resume_giin.docx`
 - `resume_mckinsey.docx`
-- `resume_hewlett.docx`
 
 For cover letters: `cover_letter_<companytag>.docx`
 
 **Step 4 — Put the file in the `feedback/` folder.**
 
-```
-feedback/resume_giin.docx
-feedback/cover_letter_giin.docx
-```
-
-**Step 5 — The tool will process this feedback on the next run automatically.**
-
-The Feedback Analyst agent compares your edited version against what it originally generated, extracts the patterns (what you changed, what style choices you made), and stores them in `memory/memory.json`.
-
-From that point on, all future resumes and cover letters will follow those patterns as hard rules.
+**Step 5 — The tool processes this feedback automatically on the next run.**
+It compares your edits against what it originally generated, extracts your patterns, and stores them as hard rules in `memory/memory.json`. All future outputs will follow those rules.
 
 ### What the tool learns
-
-- Phrases or structures you consistently remove or rewrite
-- Tone adjustments (more direct, less formal, etc.)
-- Bullet point style preferences
-- Length preferences (cutting certain sections, adding detail elsewhere)
+- Phrases you consistently rewrite or remove
+- Tone preferences (more direct, less formal, etc.)
+- Bullet point style
+- Length preferences
 - Formatting choices
 
-### Tips for good feedback
-
-- **Be consistent.** If you always remove a certain type of filler phrase, removing it every time you give feedback makes the rule stick faster.
-- **Only give feedback on things you actually want to change.** If you accepted something as-is, that is also a signal.
-- **You do not need to give feedback after every run.** Even feedback from 3–4 runs over time will meaningfully improve the output.
+### Tips
+- Be consistent — applying the same corrections across multiple feedback sessions makes the rules stick faster.
+- You do not need to give feedback after every run. Even 3–4 sessions over time make a meaningful difference.
 
 ---
 
-## Folder Structure Reference
+# Folder Structure Reference
 
 ```
-resume_builder/
+resume-builder/
 │
 ├── app.py                  ← The main app. Run this to start.
-├── main.py                 ← Pipeline entry point (runs without the UI)
 ├── config.py               ← YOUR personal info goes here
 ├── requirements.txt        ← Python dependencies
 │
 ├── src/
-│   ├── agents/
-│   │   ├── prompts/
-│   │   │   ├── _candidate_profile.md   ← YOUR profile goes here
-│   │   │   └── (other prompt files — do not edit these)
-│   │   └── (agent files — do not edit these)
-│   └── (other source files — do not edit these)
+│   └── agents/
+│       └── prompts/
+│           ├── _candidate_profile.md   ← YOUR profile goes here
+│           └── (other files — do not edit)
 │
 ├── resumes/                ← Put YOUR resume .docx files here
-├── feedback/               ← Put YOUR edited resumes here (for training)
-│                              Also put reference resume.docx here
-├── profiles/               ← Auto-generated job profiles (do not touch)
-├── memory/                 ← Auto-generated memory files (do not touch)
-└── output/                 ← Auto-generated resume outputs (download from here)
+├── feedback/               ← Put YOUR edited resumes here + reference resume.docx
+├── profiles/               ← Auto-generated (do not touch)
+├── memory/                 ← Auto-generated (do not touch)
+└── output/                 ← Generated resumes — download from here
 ```
 
-**Rule of thumb:** You only ever touch two files (`config.py` and `_candidate_profile.md`) and two folders (`resumes/` and `feedback/`). Everything else is managed by the tool.
+**Rule of thumb:** You only ever touch `config.py`, `_candidate_profile.md`, and the `resumes/` and `feedback/` folders. Everything else is managed automatically.
 
 ---
 
-## Troubleshooting
+# Troubleshooting
 
 **"claude is not recognized" or "claude: command not found"**
-This is a PATH issue — Windows does not always pick up newly installed commands right away. Try these steps in order:
-1. Close your terminal completely and open a new one, then try `claude` again.
-2. If it still fails, run `npm bin -g` — it will print a folder path like `C:\Users\YourName\AppData\Roaming\npm`. Copy that path and run `claude` from it directly, for example: `C:\Users\YourName\AppData\Roaming\npm\claude`
-3. If that works but you want `claude` to work from anywhere, add that folder to your Windows PATH: open Start → search "environment variables" → click "Edit the system environment variables" → click "Environment Variables" → under "User variables" find `Path` → click Edit → click New → paste the folder path → click OK on all windows. Restart your terminal.
+1. Close the terminal and open a new one, then try again.
+2. If it still fails, run `npm bin -g` to find where npm installed it, then add that folder to your system PATH.
+3. On Windows, restart the computer after installing Git and Node.js.
+
+**"Git is required for local sessions" in Claude Code Desktop**
+Git is not in the PATH that Claude Code Desktop sees. Close Claude Code Desktop completely and reopen it. If it persists, restart your computer — this resolves it in nearly all cases.
 
 **"streamlit: command not found"**
-Run `pip install -r requirements.txt` again. Make sure you are in the project folder when you run it.
+Run `pip install -r requirements.txt` (Mac: `pip3 install -r requirements.txt`) from inside the project folder.
 
 **The job URL didn't scrape correctly**
-Some job boards (LinkedIn, Greenhouse, Lever) block automated scrapers. If the URL fails, copy and paste the full job description text directly into the text area below the URL field.
+Some job boards block automated scrapers. Copy and paste the full job description text directly into the text area below the URL field.
 
 **The resume came out too long**
-This is normal on the first run. Use the refinement step to ask the tool to shorten it. Give it feedback on what to cut — it will remember for next time.
+Normal on the first run. Use the refinement step to ask the tool to shorten it. The tool will remember what to cut for next time.
 
 **The app crashes mid-run**
-Restart the app (`streamlit run app.py`) — it has session recovery built in and will offer to restore your last session.
+Restart with `streamlit run app.py` — the tool has session recovery and will offer to restore your last session.
 
 **PDF files are not supported**
-The feedback system only reads `.docx` Word documents. Convert any PDF to `.docx` before placing it in the `resumes/` or `feedback/` folders. You can do this in Word (File → Open the PDF → Save as .docx) or using a free online converter.
-
----
-
-## Quick Start Checklist
-
-- [ ] Claude account with paid plan
-- [ ] Claude Code CLI installed (`npm install -g @anthropic-ai/claude-code`)
-- [ ] Git for Windows installed (Windows only — [git-scm.com/downloads/win](https://git-scm.com/downloads/win))
-- [ ] Logged in to Claude Code (`claude` in terminal → browser login)
-- [ ] Python 3.10+ installed
-- [ ] Dependencies installed (`pip install -r requirements.txt`)
-- [ ] `config.py` filled with your info
-- [ ] `src/agents/prompts/_candidate_profile.md` filled with your profile
-- [ ] Your resume `.docx` added to `resumes/`
-- [ ] Reference resume added to `feedback/resume.docx`
-- [ ] App running (`streamlit run app.py`)
+Convert to `.docx` first — in Word (File → Open PDF → Save as .docx) or a free online converter.
