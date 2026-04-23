@@ -12,7 +12,7 @@ This is an AI-powered resume builder. You give it a job posting URL and your exi
 
 ## What You Need Before You Start
 
-You need three things installed on your computer:
+You need four things installed on your computer (three if you are on Mac):
 
 ### 1. A Claude subscription
 Go to [claude.ai](https://claude.ai) and create an account with a paid plan (Pro or higher). The tool uses Claude AI to do its work, and it runs entirely through your subscription — no extra charges per use.
@@ -37,7 +37,12 @@ claude
 
 Press Enter. It will open a browser window automatically. Log in with the same account you use on claude.ai. You only need to do this once.
 
-### 3. Python
+### 3. Git for Windows (Windows only)
+Go to [git-scm.com/downloads/win](https://git-scm.com/downloads/win) and download the installer. Run it with all the default options — no need to change anything. This installs Git Bash, which Claude Code requires to run on Windows.
+
+> **Mac users:** Git is already included with macOS. Skip this step.
+
+### 4. Python
 Go to [python.org/downloads](https://python.org/downloads) and download Python 3.10 or higher. During installation, **make sure to check the box that says "Add Python to PATH"** before clicking Install.
 
 To verify Python installed correctly, open a terminal and run:
@@ -332,6 +337,7 @@ The feedback system only reads `.docx` Word documents. Convert any PDF to `.docx
 
 - [ ] Claude account with paid plan
 - [ ] Claude Code CLI installed (`npm install -g @anthropic-ai/claude-code`)
+- [ ] Git for Windows installed (Windows only — [git-scm.com/downloads/win](https://git-scm.com/downloads/win))
 - [ ] Logged in to Claude Code (`claude` in terminal → browser login)
 - [ ] Python 3.10+ installed
 - [ ] Dependencies installed (`pip install -r requirements.txt`)
