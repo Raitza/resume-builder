@@ -55,23 +55,35 @@ It should show a version number like `Python 3.11.4`.
 
 ## Step 1 — Download the Project
 
-Download or clone this repository to a folder on your computer. For example:
+Open **Command Prompt** (Windows) or **Terminal** (Mac) and navigate to the folder where you want to save the project. For example:
 
+**Windows:**
 ```
-C:\Users\YourName\resume_builder
+cd C:\Users\YourName\Documents
 ```
 
-or on Mac:
-
+**Mac:**
 ```
-/Users/YourName/resume_builder
+cd /Users/YourName/Documents
+```
+
+Then run:
+```
+git clone https://github.com/Raitza/resume-builder.git
+```
+
+This creates a folder called `resume-builder` in that location with all the project files inside.
+
+Then enter the folder:
+```
+cd resume-builder
 ```
 
 ---
 
 ## Step 2 — Install Dependencies
 
-Open a terminal, navigate to the project folder, and run:
+From inside the `resume-builder` folder, run:
 
 ```
 pip install -r requirements.txt
