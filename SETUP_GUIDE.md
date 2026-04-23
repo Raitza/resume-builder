@@ -305,8 +305,11 @@ resume_builder/
 
 ## Troubleshooting
 
-**"claude: command not found"**
-Claude Code CLI is not installed or not in your PATH. Re-run `npm install -g @anthropic-ai/claude-code` and make sure Node.js is installed first.
+**"claude is not recognized" or "claude: command not found"**
+This is a PATH issue — Windows does not always pick up newly installed commands right away. Try these steps in order:
+1. Close your terminal completely and open a new one, then try `claude` again.
+2. If it still fails, run `npm bin -g` — it will print a folder path like `C:\Users\YourName\AppData\Roaming\npm`. Copy that path and run `claude` from it directly, for example: `C:\Users\YourName\AppData\Roaming\npm\claude`
+3. If that works but you want `claude` to work from anywhere, add that folder to your Windows PATH: open Start → search "environment variables" → click "Edit the system environment variables" → click "Environment Variables" → under "User variables" find `Path` → click Edit → click New → paste the folder path → click OK on all windows. Restart your terminal.
 
 **"streamlit: command not found"**
 Run `pip install -r requirements.txt` again. Make sure you are in the project folder when you run it.
