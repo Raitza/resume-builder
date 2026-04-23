@@ -1,0 +1,33 @@
+# Generated output — never commit personal data
+profiles/*
+!profiles/.gitkeep
+
+resumes/*
+!resumes/.gitkeep
+
+feedback/*
+!feedback/.gitkeep
+
+memory/*
+!memory/.gitkeep
+
+output/*
+!output/.gitkeep
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+
+# Streamlit
+streamlit.log
+.streamlit/secrets.toml
+
+# OS
+.DS_Store
+Thumbs.db

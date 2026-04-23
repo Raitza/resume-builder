@@ -1,0 +1,7 @@
+anthropic
+python-docx
+python-dotenv
+streamlit
+requests
+beautifulsoup4
+lxml
